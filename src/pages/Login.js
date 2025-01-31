@@ -5,6 +5,9 @@ import { Button, Form, Alert, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../Auth/AuthContext';
 import './Login.css'
+
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Login = () => {
   const { login } = useAuth();
   const [username, setUsername] = useState('');
@@ -19,8 +22,7 @@ const Login = () => {
     setError('');
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api';
-      const response = await axios.post(`${API_URL}/login/`, {
+      const response = await axios.post(`${baseUrl}/login/`, {
         username,
         password,
       });
