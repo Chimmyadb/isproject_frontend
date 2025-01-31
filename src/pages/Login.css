@@ -1,0 +1,44 @@
+.login-container {
+  
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative;
+    max-width: 400px;
+    margin-top: 100px;
+  }
+  .login-container::before{
+    background-image: url('../assets/R.jpg'); /* Update with the correct path to your image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+  }
+  .login-container>*{
+    position: relative;
+    z-index: 1;
+    color: white;
+
+  }
+  .login-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: white;
+    padding-bottom: 10px;
+  }
+  
+.login-form {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the form */
+    padding: 20px;
+    border-radius: 10px; /* Rounded borders for the form */
+    box-shadow: 0 4px 8px  rgba(11, 11, 11, 0.119);
+    margin-top: 10px;
+}

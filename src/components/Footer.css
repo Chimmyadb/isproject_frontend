@@ -1,0 +1,16 @@
+footer {
+    padding: 5px 0;
+    font-size: 10px;
+  }
+  footer .btn {
+    font-size: 14px;
+    padding: 4px 8px;
+  
+  }
+  footer h6 {
+    margin-bottom: 5px;
+  }
+  footer p{
+    text-align: center;
+  }
+  
