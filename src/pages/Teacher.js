@@ -7,6 +7,8 @@ import Sidebar from '../components/Sidebar';
 import { Box } from '@mui/material'; // Import Box from @mui/material
 import { Table, Container, Alert, Pagination, Card } from "react-bootstrap";
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Teacher = () => {
   const [teachers, setTeachers] = useState([]);
   const [error, setError] = useState("");
@@ -27,7 +29,7 @@ const Teacher = () => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/teachers/", {
+        const response = await axios.get(`${baseUrl}/teachers/`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

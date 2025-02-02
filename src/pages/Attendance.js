@@ -19,6 +19,7 @@ import {
 } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Attendance = () => {
   const [attendanceData, setAttendanceData] = useState([]);
@@ -36,7 +37,7 @@ const Attendance = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
 
-  const API_URL = "http://127.0.0.1:8000/api";
+  const API_URL = `${baseUrl}/api`;
 
   const fetchData = useCallback(async () => {
     try {

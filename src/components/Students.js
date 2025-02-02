@@ -8,6 +8,7 @@ import { Box} from '@mui/material'; // Import Box from @mui/material
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -30,7 +31,7 @@ const Students = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/students/');
+        const response = await axios.get(`${baseUrl}/students/`);
         setStudents(response.data);
       } catch (error) {
         console.error('Error fetching students:', error);
@@ -70,7 +71,7 @@ const Students = () => {
   // Insert a student
   const insertStudent = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/students/', newStudent);
+      const response = await axios.post(`${baseUrl}/students/`, newStudent);
       setStudents((prevStudents) => [...prevStudents, response.data]);
       setShowInsertModal(false);
     } catch (error) {
@@ -83,7 +84,7 @@ const Students = () => {
   const updateStudent = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/student/${currentStudent.id}/`,
+        `${baseUrl}/student/${currentStudent.id}/`,
         currentStudent
       );
       setStudents((prevStudents) =>

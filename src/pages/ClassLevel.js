@@ -7,6 +7,8 @@ import {  Box } from '@mui/material'; // Import Box from @mui/material
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const ClassLevel = () => {
   const [classes, setClasses] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -35,7 +37,7 @@ const ClassLevel = () => {
 
   const fetchClassroom = async () =>{
     try{
-      const response = await axios.get("http://localhost:8000/api/classrooms/");
+      const response = await axios.get(`${baseUrl}/classrooms/`);
       setClasses(response.data);
     }catch (error) {
       setError("Failed to fetch classroom.");
@@ -45,7 +47,7 @@ const ClassLevel = () => {
 
   const fetchSubject = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/subjects/");
+      const response = await axios.get(`${baseUrl}/subjects/`);
       setSubjects(response.data);
     } catch (error) {
       setError("Failed to fetch subject.");
@@ -72,7 +74,7 @@ const ClassLevel = () => {
   //insert a class
   const insertClass = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/classrooms/', newClass);
+      const response = await axios.post(`${baseUrl}//classrooms/`, newClass);
       setClasses((prev) => [...prev, response.data]);
       setNewClass({ name: '', subject: '' });
       setShowInsertModal(false);
@@ -100,7 +102,7 @@ const ClassLevel = () => {
       };
   
       const response = await axios.put(
-        `http://localhost:8000/api/classroom/${currentClass.id}/`,
+        `${baseUrl}//classroom/${currentClass.id}/`,
         updatedClass
       );
   

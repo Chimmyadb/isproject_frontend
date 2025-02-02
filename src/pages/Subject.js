@@ -8,6 +8,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Subject = () => {
   const [subjects, setSubjects] = useState([]);
   const [teachers, setTeachers] = useState([]);
@@ -28,7 +30,7 @@ const Subject = () => {
 
   const fetchSubjects = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/subjects/");
+      const response = await axios.get(`${baseUrl}/subjects/`);
       setSubjects(response.data);
     } catch (error) {
       setError("Failed to fetch subjects.");
@@ -38,7 +40,7 @@ const Subject = () => {
 
   const fetchTeachers = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/teachers/");
+      const response = await axios.get(`${baseUrl}/teachers/`);
       setTeachers(response.data);
     } catch (error) {
       setError("Failed to fetch teachers.");
@@ -55,12 +57,12 @@ const Subject = () => {
     try {
       if (isEditing) {
         await axios.put(
-          `http://localhost:8000/api/subject/${currentSubject.id}/`,
+          `${baseUrl}/subject/${currentSubject.id}/`,
           currentSubject
         );
       } else {
         const response = await axios.post(
-          "http://localhost:8000/api/subjects/",
+          `${baseUrl}/subjects/`,
           currentSubject
         );
         setSubjects((prev) => [...prev, response.data]);

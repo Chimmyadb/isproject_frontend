@@ -7,6 +7,8 @@ import { Box } from '@mui/material'; // Import Box from @mui/material
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Profile = () => {
   // State to manage profile data and loading/error states
   const [profileData, setProfileData] = useState({
@@ -22,7 +24,7 @@ const Profile = () => {
     // Fetch teacher data when the component mounts
     const fetchTeacherData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/teachers/');
+        const response = await axios.get(`${baseUrl}/teachers/`);
         // Assuming the response contains the teacher data (adjust depending on your API structure)
         const data = response.data[0]; // Assuming it returns an array, get the first item
         setProfileData(data);
