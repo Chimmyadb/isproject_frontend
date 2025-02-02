@@ -36,6 +36,10 @@ const Attendance = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
+  // const fetchData = useCallback(() => {
+  //   // Fetching logic here
+  // }, [API_URL]); // Add API_URL here
+  
 
   const API_URL = `${baseUrl}/api`;
 
@@ -60,7 +64,7 @@ const Attendance = () => {
       console.error("Error fetching data:", error);
       setAlert({ show: true, message: "Failed to fetch data.", variant: "danger" });
     }
-  }, []);
+  }, [API_URL]);
 
   const processWeeklyAttendance = (data) => {
     if (!data || !Array.isArray(data)) return { labels: [], datasets: [] };
