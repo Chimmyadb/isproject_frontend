@@ -37,7 +37,7 @@ const ClassLevel = () => {
 
   const fetchClassroom = async () =>{
     try{
-      const response = await axios.get(`${baseUrl}/classrooms/`);
+      const response = await axios.get(`${baseUrl}/api/classrooms/`);
       setClasses(response.data);
     }catch (error) {
       setError("Failed to fetch classroom.");
@@ -47,7 +47,7 @@ const ClassLevel = () => {
 
   const fetchSubject = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/subjects/`);
+      const response = await axios.get(`${baseUrl}/api/subjects/`);
       setSubjects(response.data);
     } catch (error) {
       setError("Failed to fetch subject.");
@@ -74,7 +74,7 @@ const ClassLevel = () => {
   //insert a class
   const insertClass = async () => {
     try {
-      const response = await axios.post(`${baseUrl}//classrooms/`, newClass);
+      const response = await axios.post(`${baseUrl}/api/classrooms/`, newClass);
       setClasses((prev) => [...prev, response.data]);
       setNewClass({ name: '', subject: '' });
       setShowInsertModal(false);
@@ -102,7 +102,7 @@ const ClassLevel = () => {
       };
   
       const response = await axios.put(
-        `${baseUrl}//classroom/${currentClass.id}/`,
+        `${baseUrl}/api/classroom/${currentClass.id}/`,
         updatedClass
       );
   

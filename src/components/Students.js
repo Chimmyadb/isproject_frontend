@@ -31,7 +31,7 @@ const Students = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/students/`);
+        const response = await axios.get(`${baseUrl}/api/students/`);
         setStudents(response.data);
       } catch (error) {
         console.error('Error fetching students:', error);
@@ -71,7 +71,7 @@ const Students = () => {
   // Insert a student
   const insertStudent = async () => {
     try {
-      const response = await axios.post(`${baseUrl}/students/`, newStudent);
+      const response = await axios.post(`${baseUrl}/api/students/`, newStudent);
       setStudents((prevStudents) => [...prevStudents, response.data]);
       setShowInsertModal(false);
     } catch (error) {
@@ -84,7 +84,7 @@ const Students = () => {
   const updateStudent = async () => {
     try {
       const response = await axios.put(
-        `${baseUrl}/student/${currentStudent.id}/`,
+        `${baseUrl}/api/student/${currentStudent.id}/`,
         currentStudent
       );
       setStudents((prevStudents) =>

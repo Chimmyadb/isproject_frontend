@@ -29,7 +29,7 @@ const Teacher = () => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/teachers/`, {
+        const response = await axios.get(`${baseUrl}/api/teachers/`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

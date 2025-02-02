@@ -24,7 +24,7 @@ const Profile = () => {
     // Fetch teacher data when the component mounts
     const fetchTeacherData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/teachers/`);
+        const response = await axios.get(`${baseUrl}/api/teachers/`);
         // Assuming the response contains the teacher data (adjust depending on your API structure)
         const data = response.data[0]; // Assuming it returns an array, get the first item
         setProfileData(data);

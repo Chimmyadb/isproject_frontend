@@ -30,7 +30,7 @@ const Subject = () => {
 
   const fetchSubjects = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/subjects/`);
+      const response = await axios.get(`${baseUrl}/api/subjects/`);
       setSubjects(response.data);
     } catch (error) {
       setError("Failed to fetch subjects.");
@@ -40,7 +40,7 @@ const Subject = () => {
 
   const fetchTeachers = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/teachers/`);
+      const response = await axios.get(`${baseUrl}/api/teachers/`);
       setTeachers(response.data);
     } catch (error) {
       setError("Failed to fetch teachers.");
@@ -57,12 +57,12 @@ const Subject = () => {
     try {
       if (isEditing) {
         await axios.put(
-          `${baseUrl}/subject/${currentSubject.id}/`,
+          `${baseUrl}/api/subject/${currentSubject.id}/`,
           currentSubject
         );
       } else {
         const response = await axios.post(
-          `${baseUrl}/subjects/`,
+          `${baseUrl}/api/subjects/`,
           currentSubject
         );
         setSubjects((prev) => [...prev, response.data]);
